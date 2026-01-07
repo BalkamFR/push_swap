@@ -6,7 +6,7 @@
 /*   By: papilaz <papilaz@student.42lyon.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/01/06 17:37:27 by papilaz           #+#    #+#             */
-/*   Updated: 2026/01/07 00:44:50 by papilaz          ###   ########.fr       */
+/*   Updated: 2026/01/07 14:53:37 by papilaz          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,7 +15,6 @@
 t_list	*ft_lstnew(int	nbr)
 {
 	t_list	*new_node;
-	int	temp;
 
 	new_node = malloc(sizeof(t_list));
 	if (!new_node)
