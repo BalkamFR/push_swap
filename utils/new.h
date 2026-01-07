@@ -6,7 +6,7 @@
 /*   By: papilaz <papilaz@student.42lyon.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/01/06 17:37:52 by papilaz           #+#    #+#             */
-/*   Updated: 2026/01/07 15:23:24 by papilaz          ###   ########.fr       */
+/*   Updated: 2026/01/07 20:18:29 by papilaz          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,6 +43,7 @@ int	ft_lstsize(t_list *lst);
 void	ft_ss(t_list *stack_a, t_list *stack_b);
 
 void	ft_swap_a(t_list *stack_a);
-void	ft_push_b(t_list **stack_b, t_list **stack_a);
+void	ft_push_b(t_list **stack_a, t_list **stack_b);
+void	ft_push_a(t_list **stack_a, t_list **stack_b);
 
 #endif

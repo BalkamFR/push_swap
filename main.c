@@ -6,7 +6,7 @@
 /*   By: papilaz <papilaz@student.42lyon.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/01/06 16:02:47 by papilaz           #+#    #+#             */
-/*   Updated: 2026/01/07 20:13:20 by papilaz          ###   ########.fr       */
+/*   Updated: 2026/01/07 20:17:53 by papilaz          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,6 +25,7 @@ int	main(int argc, char **argv)
 	}
 	stack_a = list_parsed(argv, argc);
 	ft_push_b(&stack_a, &stack_b);
+	ft_push_a(&stack_a, &stack_b);
 	ft_print_stack_list(stack_a, stack_b);
 	
 	ft_lstclear(&stack_a);
