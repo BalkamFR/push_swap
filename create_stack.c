@@ -6,7 +6,7 @@
 /*   By: papilaz <papilaz@student.42lyon.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/01/06 16:35:37 by papilaz           #+#    #+#             */
-/*   Updated: 2026/01/07 16:12:21 by papilaz          ###   ########.fr       */
+/*   Updated: 2026/01/09 17:33:47 by papilaz          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,8 +41,8 @@ void	ft_print_stack(t_list *list)
 	temp = list;
 	while (temp)
 	{
-		ft_putstr("\n");
 		ft_putnbr(temp->content);
+		ft_putstr(" ");
 		temp = temp->next;
 	}
 }
@@ -73,4 +73,15 @@ void	ft_print_stack_list(t_list *list, t_list *list2)
 		ft_printf("\n--------------\n");
 		i++;
 	}
+}
+
+void	ft_print_stack_list_2(t_list *list, t_list *list2)
+{
+
+	ft_printf("-------------------------\n");
+	ft_printf("\nlist a : ");
+	ft_print_stack(list);
+	ft_printf("\nlist b : ");
+	ft_print_stack(list2);
+	ft_printf("\n\n-------------------------\n");
 }

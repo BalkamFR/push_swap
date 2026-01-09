@@ -6,11 +6,11 @@
 /*   By: papilaz <papilaz@student.42lyon.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/01/06 17:35:49 by papilaz           #+#    #+#             */
-/*   Updated: 2026/01/07 15:11:57 by papilaz          ###   ########.fr       */
+/*   Updated: 2026/01/09 17:12:11 by papilaz          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "new.h"
+#include "../push_swap.h"
 
 
 int	ft_putstr(char *tab)

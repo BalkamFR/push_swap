@@ -6,11 +6,11 @@
 /*   By: papilaz <papilaz@student.42lyon.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/11/06 13:13:38 by papilaz           #+#    #+#             */
-/*   Updated: 2026/01/06 18:20:24 by papilaz          ###   ########.fr       */
+/*   Updated: 2026/01/09 17:12:03 by papilaz          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "new.h"
+#include "../push_swap.h"
 
 static int	ft_comptword(char const *tab, char sep, int flag)
 {

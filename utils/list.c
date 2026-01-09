@@ -1,16 +1,16 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   new_list.c                                         :+:      :+:    :+:   */
+/*   list.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: papilaz <papilaz@student.42lyon.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/01/06 17:37:27 by papilaz           #+#    #+#             */
-/*   Updated: 2026/01/07 14:53:37 by papilaz          ###   ########.fr       */
+/*   Updated: 2026/01/09 17:37:25 by papilaz          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "new.h"
+#include "../push_swap.h"
 
 t_list	*ft_lstnew(int	nbr)
 {
@@ -82,9 +82,19 @@ void	ft_lstclear(t_list **lst)
 	}
 	*lst = NULL;
 }
+t_list	*ft_lstlast(t_list *lst)
+{
+	int		size;
+	int		i;
+	t_list	*tmp;
 
-// void	ft_lstdelone(t_list *lst)
-// {
-// 	free(lst->content);
-// 	free(lst);
-// }
+	i = 0;
+	tmp = lst;
+	size = ft_lstsize(lst);
+	while (i < size - 1 && tmp)
+	{
+		tmp = tmp->next;
+		i++;
+	}
+	return (tmp);
+}

@@ -6,7 +6,7 @@
 /*   By: papilaz <papilaz@student.42lyon.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/01/06 16:02:47 by papilaz           #+#    #+#             */
-/*   Updated: 2026/01/07 20:17:53 by papilaz          ###   ########.fr       */
+/*   Updated: 2026/01/09 17:34:49 by papilaz          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,15 +18,14 @@ int	main(int argc, char **argv)
 	t_list *stack_b;
 	
 	stack_b = NULL;
-	if (argc < 1)
+	if (argc <= 1)
 	{
 		write(2, "Error\n", 6);
 		return(0);
 	}
 	stack_a = list_parsed(argv, argc);
-	ft_push_b(&stack_a, &stack_b);
-	ft_push_a(&stack_a, &stack_b);
-	ft_print_stack_list(stack_a, stack_b);
+	ft_printf("-------------------------\n");
+	ft_print_stack_list_2(stack_a, stack_b);
 	
 	ft_lstclear(&stack_a);
 	return(1);

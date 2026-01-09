@@ -6,7 +6,7 @@
 /*   By: papilaz <papilaz@student.42lyon.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/01/06 16:03:23 by papilaz           #+#    #+#             */
-/*   Updated: 2026/01/07 16:17:10 by papilaz          ###   ########.fr       */
+/*   Updated: 2026/01/09 17:36:59 by papilaz          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -71,4 +71,11 @@ void	ft_push_a(t_list **stack_a, t_list **stack_b)
 	ft_lstadd_front(stack_a, ft_lstnew(temp->content));
 	*stack_b = temp->next;
 	ft_putstr("pa\n");
+}
+
+void	ft_rotate_a(t_list **stack_a)
+{
+	t_list *temp;
+	
+	ft_lstlast
 }
