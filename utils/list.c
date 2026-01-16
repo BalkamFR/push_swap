@@ -1,0 +1,114 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   list.c                                             :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: papilaz <papilaz@student.42lyon.fr>        +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2026/01/06 17:37:27 by papilaz           #+#    #+#             */
+/*   Updated: 2026/01/11 20:30:25 by papilaz          ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
+#include "../push_swap.h"
+
+t_list	*ft_lstnew(int nbr)
+{
+	t_list	*new_node;
+
+	new_node = malloc(sizeof(t_list));
+	if (!new_node)
+		return (NULL);
+	new_node->content = nbr;
+	new_node->next = NULL;
+	return (new_node);
+}
+
+t_list	*ft_lstclone(t_list *node)
+{
+	t_list	*new_node;
+
+	new_node = malloc(sizeof(t_list));
+	if (!new_node)
+		return (NULL);
+	new_node->content = node->content;
+	new_node->next = node->next;
+	return (new_node);
+}
+
+void	ft_lstadd_front(t_list **lst, t_list *new)
+{
+	if (!lst || !new)
+		return ;
+	new->next = *lst;
+	*lst = new;
+}
+
+void	ft_lstadd_back(t_list **lst, t_list *new)
+{
+	t_list	*tmp;
+	t_list	*tmp_2;
+
+	if (!lst || !*lst)
+	{
+		ft_lstadd_front(lst, new);
+		return ;
+	}
+	tmp = *lst;
+	while (tmp->next)
+		tmp = tmp->next;
+	tmp_2 = tmp;
+	tmp->next = new;
+	tmp = tmp->next;
+}
+
+int	ft_lstsize(t_list *lst)
+{
+	int		i;
+	t_list	*tmp;
+
+	i = 0;
+	tmp = lst;
+	while (tmp)
+	{
+		tmp = tmp->next;
+		i++;
+	}
+	return (i);
+}
+
+void	ft_lstclear(t_list **lst)
+{
+	t_list	*tmp;
+	t_list	*next;
+
+	tmp = *lst;
+	while (tmp)
+	{
+		next = tmp->next;
+		free(tmp);
+		tmp = next;
+	}
+	*lst = NULL;
+}
+t_list	*ft_lstlast(t_list *lst)
+{
+	int		size;
+	int		i;
+	t_list	*tmp;
+
+	i = 0;
+	tmp = lst;
+	size = ft_lstsize(lst);
+	while (i < size - 1 && tmp)
+	{
+		tmp = tmp->next;
+		i++;
+	}
+	return (tmp);
+}
+
+void	ft_lstdelone(t_list *lst)
+{
+	free(lst);
+}
