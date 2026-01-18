@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   create_stack.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ajeloyan <ajeloyan@student.42.fr>          +#+  +:+       +#+        */
+/*   By: papilaz <papilaz@student.42lyon.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/01/06 16:35:37 by papilaz           #+#    #+#             */
-/*   Updated: 2026/01/16 16:47:23 by ajeloyan         ###   ########.fr       */
+/*   Updated: 2026/01/18 18:03:28 by papilaz          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,7 +23,7 @@ t_list	*create_stack(char **list_brut)
 	while (list_brut[i])
 	{
 		temp = ft_atoi(list_brut[i]);
-		ft_lstadd_back(&stack_created, ft_lstnew(temp));
+		ft_lstadd_back(&stack_created, ft_lstnew(temp, 0));
 		i++;
 	}
 	return (stack_created);

@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   push.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ajeloyan <ajeloyan@student.42.fr>          +#+  +:+       +#+        */
+/*   By: papilaz <papilaz@student.42lyon.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/01/16 15:09:09 by ajeloyan          #+#    #+#             */
-/*   Updated: 2026/01/16 15:37:33 by ajeloyan         ###   ########.fr       */
+/*   Updated: 2026/01/18 18:04:46 by papilaz          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,7 +22,7 @@ static void	ft_push(t_list **stack_a, t_list **stack_b)
 		return ;
 	}
 	temp = *stack_a;
-	ft_lstadd_front(stack_b, ft_lstnew(temp->content));
+	ft_lstadd_front(stack_b, ft_lstnew(temp->content, temp->index));
 	*stack_a = temp->next;
 	free(temp);
 }

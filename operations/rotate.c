@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   rotate.c                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ajeloyan <ajeloyan@student.42.fr>          +#+  +:+       +#+        */
+/*   By: papilaz <papilaz@student.42lyon.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/01/16 15:10:56 by ajeloyan          #+#    #+#             */
-/*   Updated: 2026/01/16 15:35:18 by ajeloyan         ###   ########.fr       */
+/*   Updated: 2026/01/18 18:05:02 by papilaz          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,7 +22,7 @@ static void	ft_rotate(t_list **stack)
 		return ;
 	}
 	temp = *stack;
-	ft_lstadd_back(stack, ft_lstnew(temp->content));
+	ft_lstadd_back(stack, ft_lstnew(temp->content, temp->index));
 	*stack = temp->next;
 	free(temp);
 }

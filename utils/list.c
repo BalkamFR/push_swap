@@ -6,19 +6,20 @@
 /*   By: papilaz <papilaz@student.42lyon.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/01/06 17:37:27 by papilaz           #+#    #+#             */
-/*   Updated: 2026/01/11 20:30:25 by papilaz          ###   ########.fr       */
+/*   Updated: 2026/01/18 16:38:34 by papilaz          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../push_swap.h"
 
-t_list	*ft_lstnew(int nbr)
+t_list	*ft_lstnew(int nbr, int index_nbr)
 {
 	t_list	*new_node;
 
 	new_node = malloc(sizeof(t_list));
 	if (!new_node)
 		return (NULL);
+	new_node->index = index_nbr;
 	new_node->content = nbr;
 	new_node->next = NULL;
 	return (new_node);
@@ -32,6 +33,7 @@ t_list	*ft_lstclone(t_list *node)
 	if (!new_node)
 		return (NULL);
 	new_node->content = node->content;
+	new_node->index = node->index;
 	new_node->next = node->next;
 	return (new_node);
 }

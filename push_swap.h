@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   push_swap.h                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ajeloyan <ajeloyan@student.42.fr>          +#+  +:+       +#+        */
+/*   By: papilaz <papilaz@student.42lyon.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/01/06 17:37:52 by papilaz           #+#    #+#             */
-/*   Updated: 2026/01/16 18:26:44 by ajeloyan         ###   ########.fr       */
+/*   Updated: 2026/01/18 17:05:59 by papilaz          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,6 +23,7 @@
 typedef struct s_list
 {
 	int				content;
+	int				index;
 	struct s_list	*next;
 }					t_list;
 
@@ -34,7 +35,7 @@ char				**ft_split(char *s, char c);
 int					ft_strlen(char *str);
 int					ft_strcmp_ps(char *str, char *str2);
 
-t_list				*ft_lstnew(int content);
+t_list				*ft_lstnew(int nbr, int index_nbr);
 void				ft_lstadd_front(t_list **lst, t_list *new);
 void				ft_lstadd_back(t_list **lst, t_list *new);
 void				ft_print_stack_list(t_list *list, t_list *list2);

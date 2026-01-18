@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   parsing.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ajeloyan <ajeloyan@student.42.fr>          +#+  +:+       +#+        */
+/*   By: papilaz <papilaz@student.42lyon.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/01/06 18:32:18 by papilaz           #+#    #+#             */
-/*   Updated: 2026/01/16 17:47:37 by ajeloyan         ###   ########.fr       */
+/*   Updated: 2026/01/18 18:07:07 by papilaz          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -59,6 +59,21 @@ int check_valid(char **argv)
 	return (0);
 }
 
+void	ft_free_all(char **tab)
+{
+	int	i;
+
+	i = 0;
+	while (tab[i])
+	{
+		free(tab[i]);
+		i++;
+	}
+	free(tab);
+	
+}
+
+
 t_list	*list_parsed(char **argv, int argc)
 {
 	char **new;
@@ -70,7 +85,7 @@ t_list	*list_parsed(char **argv, int argc)
 		if (check_doubles(argv) == 1 || check_valid(new) == 1)
 			return (NULL);
 		newlist = create_stack(new);
-		free(new);
+		ft_free_all(new);
 	}
 	else
 	{
