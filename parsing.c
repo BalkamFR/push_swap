@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   parsing.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: papilaz <papilaz@student.42lyon.fr>        +#+  +:+       +#+        */
+/*   By: ajeloyan <ajeloyan@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/01/06 18:32:18 by papilaz           #+#    #+#             */
-/*   Updated: 2026/01/18 18:07:07 by papilaz          ###   ########.fr       */
+/*   Updated: 2026/01/18 18:30:30 by ajeloyan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -93,6 +93,7 @@ t_list	*list_parsed(char **argv, int argc)
 			return (NULL);
 		newlist = create_stack(argv + 1);
 	}
+	ft_index(&newlist);
 	return (newlist);
 }
 
