@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   push_swap.h                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ajeloyan <ajeloyan@student.42.fr>          +#+  +:+       +#+        */
+/*   By: papilaz <papilaz@student.42lyon.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/01/06 17:37:52 by papilaz           #+#    #+#             */
-/*   Updated: 2026/01/23 16:21:40 by ajeloyan         ###   ########.fr       */
+/*   Updated: 2026/01/24 17:50:08 by papilaz          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -63,8 +63,10 @@ void				ft_rrr(t_list **stack_a, t_list **stack_b);
 
 void				selection_sort(t_list **stack_a, t_list **stack_b);
 void				chunk_sort(t_list **stack_a, t_list **stack_b);
+int				check_min_pos(t_list *stack_a, int res);
 
-int					check_min(t_list *stack_a);
+int				check_min(t_list *stack_a);
 void				ft_index(t_list **stack);
+
 
 #endif

@@ -10,9 +10,9 @@ INC_DIR     = includes
 PRINTF_LIB  = $(PRINTF_DIR)/libftprintf.a
 
 
-CC          = cc
+# CC          = cc
 CFLAGS      = -Wall -Wextra -Werror -g3
-# CFLAGS      = -g3
+CFLAGS      = -g3
 
 
 INCLUDES    = -I. -I$(PRINTF_DIR)/includes -Iutils

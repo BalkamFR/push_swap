@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   main.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ajeloyan <ajeloyan@student.42.fr>          +#+  +:+       +#+        */
+/*   By: papilaz <papilaz@student.42lyon.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/01/06 16:02:47 by papilaz           #+#    #+#             */
-/*   Updated: 2026/01/23 19:31:22 by ajeloyan         ###   ########.fr       */
+/*   Updated: 2026/01/24 20:40:15 by papilaz          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,9 +28,9 @@ int	main(int argc, char **argv)
 	if (stack_a == NULL)
 	return (0);
 	// ft_printf("-------------------------\n");
-	// selection_sort(&stack_a, &stack_b);
-	chunk_sort(&stack_a, &stack_b);
-	ft_print_stack_list_2(stack_a, stack_b);
+	selection_sort(&stack_a, &stack_b);
+	// chunk_sort(&stack_a, &stack_b);
+	// ft_print_stack_list_2(stack_a, stack_b);
 	ft_lstclear(&stack_a);
 	ft_lstclear(&stack_b);
 	return (1);
