@@ -6,7 +6,7 @@
 /*   By: ajeloyan <ajeloyan@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/01/06 17:37:52 by papilaz           #+#    #+#             */
-/*   Updated: 2026/01/18 18:31:12 by ajeloyan         ###   ########.fr       */
+/*   Updated: 2026/01/23 16:21:40 by ajeloyan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -62,6 +62,7 @@ void				ft_reverse_rotate_b(t_list **stack_b);
 void				ft_rrr(t_list **stack_a, t_list **stack_b);
 
 void				selection_sort(t_list **stack_a, t_list **stack_b);
+void				chunk_sort(t_list **stack_a, t_list **stack_b);
 
 int					check_min(t_list *stack_a);
 void				ft_index(t_list **stack);

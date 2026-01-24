@@ -27,7 +27,8 @@ SRCS        = main.c \
               utils/ft_split.c \
               utils/basics.c \
               utils/list.c \
-			  algos/simple_select.c 
+			  algos/simple_select.c \
+			  algos/medium_chunk.c
 
 
 
