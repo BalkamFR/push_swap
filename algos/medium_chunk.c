@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   medium_chunk.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: papilaz <papilaz@student.42lyon.fr>        +#+  +:+       +#+        */
+/*   By: armenag <armenag@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/01/24 17:23:25 by papilaz           #+#    #+#             */
-/*   Updated: 2026/01/24 20:39:32 by papilaz          ###   ########.fr       */
+/*   Updated: 2026/01/27 23:07:25 by armenag          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -64,7 +64,6 @@ int	check_max(t_list *stack_b)
 	}
 	return (res);
 }
-
 
 void	chunk_sort(t_list **stack_a, t_list **stack_b)
 {

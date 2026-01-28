@@ -28,7 +28,8 @@ SRCS        = main.c \
               utils/basics.c \
               utils/list.c \
 			  algos/simple_select.c \
-			  algos/medium_chunk.c
+			  algos/medium_chunk.c \
+			  algos/complex_radix.c
 
 
 
