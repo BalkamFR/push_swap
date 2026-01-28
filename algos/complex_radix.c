@@ -6,7 +6,7 @@
 /*   By: armenag <armenag@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/01/27 23:28:14 by armenag           #+#    #+#             */
-/*   Updated: 2026/01/28 02:12:24 by armenag          ###   ########.fr       */
+/*   Updated: 2026/01/28 02:18:50 by armenag          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -44,16 +44,18 @@ void radix_sort(t_list **stack_a, t_list **stack_b)
     int i;
     int max_bin;
     int max_index;
+    int size;
 
     max_index = check_index_max(*stack_a);
     max_bin = binary_size(max_index);
+    size = ft_lstsize(*stack_a);
     i = 0;
-    while(i < ft_lstsize(*stack_a))
+    while(i < size)
     {
-        if(((*stack_a)->index & 1) != 1)
-            ft_push_b(stack_a, stack_b);
-        else
+        if(((*stack_a)->index & 1) == 1)
             ft_rotate_a(stack_a);
+        else
+            ft_push_b(stack_a, stack_b);
         i++;
     }
 }
