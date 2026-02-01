@@ -10,9 +10,9 @@ INC_DIR     = includes
 PRINTF_LIB  = $(PRINTF_DIR)/libftprintf.a
 
 
-CC          = cc
+# CC          = cc
 CFLAGS      = -Wall -Wextra -Werror -g3
-# CFLAGS      = -g3
+CFLAGS      = -g3
 
 
 INCLUDES    = -I. -I$(PRINTF_DIR)/includes -Iutils
@@ -27,7 +27,9 @@ SRCS        = main.c \
               utils/ft_split.c \
               utils/basics.c \
               utils/list.c \
-			  algos/simple_select.c 
+			  algos/simple_select.c \
+			  algos/medium_chunk.c \
+			  algos/complex_radix.c
 
 
 
