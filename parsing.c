@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   parsing.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: papilaz <papilaz@student.42lyon.fr>        +#+  +:+       +#+        */
+/*   By: ajeloyan <ajeloyan@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/01/06 18:32:18 by papilaz           #+#    #+#             */
-/*   Updated: 2026/02/01 15:44:53 by papilaz          ###   ########.fr       */
+/*   Updated: 2026/02/02 16:44:23 by ajeloyan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,7 +36,8 @@ int	flag_select_algo(char **argv)
 	flag = 0;
 	while (argv[i])
 	{
-		flag = check_flag_tab(argv[i]);
+		if (flag == 0)
+			flag = check_flag_tab(argv[i]);
 		i++;
 	}
 	return(flag);
@@ -83,7 +84,7 @@ int check_valid(char **argv)
 		{
 			if(argv[i][j] == '-')
 				count++;
-			if (((argv[i][j] < '0' || argv[i][j] > '9') || count > 1 ))
+			if (((argv[i][j] < '0' || argv[i][j] > '9') && count > 1 ))
 				return(1);
 			j++;
 		}
@@ -126,10 +127,7 @@ t_list	*list_parsed(char **argv, int argc)
 	else
 	{
 		if (check_doubles(argv + 1) == 1 || check_valid(argv + 1) == 1)
-		{
-			write(2, "Error\n", 6);
 			return (NULL);
-		}
 		newlist = create_stack(argv + 1);
 	}
 	ft_index(&newlist);

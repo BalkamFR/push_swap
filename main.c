@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   main.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: papilaz <papilaz@student.42lyon.fr>        +#+  +:+       +#+        */
+/*   By: ajeloyan <ajeloyan@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/01/06 16:02:47 by papilaz           #+#    #+#             */
-/*   Updated: 2026/02/01 15:44:21 by papilaz          ###   ########.fr       */
+/*   Updated: 2026/02/02 16:33:26 by ajeloyan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,7 +38,7 @@ int	main(int argc, char **argv)
 		return (0);
 	// ft_printf("-------------------------\n");
 	select_algo(&stack_a, &stack_b);
-	ft_print_stack_list_2(stack_a, stack_b);
+	// ft_print_stack_list_2(stack_a, stack_b);
 	ft_lstclear(&stack_a);
 	ft_lstclear(&stack_b);
 	return (1);

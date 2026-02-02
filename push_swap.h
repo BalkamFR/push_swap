@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   push_swap.h                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: papilaz <papilaz@student.42lyon.fr>        +#+  +:+       +#+        */
+/*   By: ajeloyan <ajeloyan@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/01/06 17:37:52 by papilaz           #+#    #+#             */
-/*   Updated: 2026/02/01 15:23:54 by papilaz          ###   ########.fr       */
+/*   Updated: 2026/02/02 16:29:30 by ajeloyan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -69,7 +69,9 @@ void				radix_sort(t_list **stack_a, t_list **stack_b);
 int					check_min_pos(t_list *stack_a, int res);
 int					check_min(t_list *stack_a);
 void				ft_index(t_list **stack);
+void				sort_binary(t_list **stack_a, t_list **stack_b, int size,
+						int move_on);
 
-int				check_flag_tab(char *tab);
-int				flag_select_algo(char **argv);
+int					check_flag_tab(char *tab);
+int					flag_select_algo(char **argv);
 #endif
