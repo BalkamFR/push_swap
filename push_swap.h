@@ -6,7 +6,7 @@
 /*   By: ajeloyan <ajeloyan@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/01/06 17:37:52 by papilaz           #+#    #+#             */
-/*   Updated: 2026/02/02 16:29:30 by ajeloyan         ###   ########.fr       */
+/*   Updated: 2026/02/02 22:06:57 by ajeloyan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -74,4 +74,6 @@ void				sort_binary(t_list **stack_a, t_list **stack_b, int size,
 
 int					check_flag_tab(char *tab);
 int					flag_select_algo(char **argv);
+
+float					compute_disorder(t_list *stack_a);
 #endif

@@ -6,7 +6,7 @@
 /*   By: ajeloyan <ajeloyan@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/01/06 18:32:18 by papilaz           #+#    #+#             */
-/*   Updated: 2026/02/02 16:44:23 by ajeloyan         ###   ########.fr       */
+/*   Updated: 2026/02/02 22:32:12 by ajeloyan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,7 +15,7 @@
 int	check_flag_tab(char *tab)
 {
 	if (!tab)
-		return(0);	
+		return(-1);	
 	if (ft_strcmp_ps(tab, "--simple"))
 		return(1);
 	if (ft_strcmp_ps(tab, "--medium"))
