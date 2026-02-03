@@ -6,7 +6,7 @@
 /*   By: ajeloyan <ajeloyan@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/01/24 17:23:25 by papilaz           #+#    #+#             */
-/*   Updated: 2026/02/02 23:15:46 by ajeloyan         ###   ########.fr       */
+/*   Updated: 2026/02/03 16:25:30 by ajeloyan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -46,7 +46,7 @@ int	chunk_number(t_list *stack_a)
 
 	tot_number = ft_lstsize(stack_a);
 	res = 0;
-	while ((res * res) < tot_number)
+	while ((res * res) <= tot_number)
 		res++;
 	return (res);
 }
@@ -65,7 +65,23 @@ int	check_max(t_list *stack_b)
 	return (res);
 }
 
-void	chunk_sort_push_a(t_list **stack_a, t_list ** stack_b)
+int	check_good_index_pos(t_list *stack_a, int index_range)
+{
+	int	count;
+	int	size;
+
+	size = ft_lstsize(stack_a);
+	count = 0;
+	while (stack_a && stack_a->index >= index_range)
+	{
+		count++;
+		stack_a = stack_a->next;
+	}
+	if (count >= size / 2)
+		return (0);
+	return (1);
+}
+void	chunk_sort_push_a(t_list **stack_a, t_list **stack_b)
 {
 	int	min;
 
@@ -82,40 +98,25 @@ void	chunk_sort_push_a(t_list **stack_a, t_list ** stack_b)
 		ft_push_a(stack_a, stack_b);
 	}
 }
-int check_good_index_pos(t_list *stack_a, int index_range)
-{
-	int count;
-	int size;
-	
-	size = ft_lstsize(stack_a);
-	count = 0;
-	while(stack_a && stack_a->index != index_range)
-	{
-		count++;
-		stack_a = stack_a->next;
-	}
-	if (count > size / 2)
-		return (0);
-	return (1);
-}
 
 void	chunk_sort(t_list **stack_a, t_list **stack_b)
 {
-	int	range_res;
 	int	index_range;
 	int	i;
-	int	rotate_res;
+	int	index_pos;
+	int taugmentation;
 
+	taugmentation = chunk_number(*stack_a);
 	i = 0;
 	index_range = chunk_number(*stack_a);
 	while (*stack_a)
 	{
 		while (i < index_range && *stack_a)
 		{
-			rotate_res = check_good_index_pos(*stack_a, index_range);
 			while ((*stack_a)->index >= index_range)
 			{
-				if (rotate_res == 0)
+				index_pos = check_good_index_pos(*stack_a, index_range);
+				if (index_pos == 0)
 					ft_reverse_rotate_a(stack_a);
 				else
 					ft_rotate_a(stack_a);
@@ -123,8 +124,7 @@ void	chunk_sort(t_list **stack_a, t_list **stack_b)
 			ft_push_b(stack_a, stack_b);
 			i++;
 		}
-		index_range = index_range + index_range;
+		index_range = index_range + taugmentation;
 	}
 	chunk_sort_push_a(stack_a, stack_b);
 }
-

@@ -6,7 +6,7 @@
 /*   By: ajeloyan <ajeloyan@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/01/06 16:02:47 by papilaz           #+#    #+#             */
-/*   Updated: 2026/02/02 22:37:58 by ajeloyan         ###   ########.fr       */
+/*   Updated: 2026/02/03 16:17:20 by ajeloyan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -67,9 +67,11 @@ int	main(int argc, char **argv)
 	if (stack_a == NULL)
 		return (0);
 	// ft_printf("-------------------------\n");
-	float	disorder;
-	disorder = compute_disorder(stack_a);
-	select_algo(&stack_a, &stack_b);
+	// float	disorder;
+	// disorder = compute_disorder(stack_a);
+	// select_algo(&stack_a, &stack_b);
+	chunk_sort(&stack_a, &stack_b);
+	// selection_sort(&stack_a, &stack_b);
 	// ft_print_stack_list_2(stack_a, stack_b);
 	ft_lstclear(&stack_a);
 	ft_lstclear(&stack_b);
