@@ -6,7 +6,7 @@
 /*   By: papilaz <papilaz@student.42lyon.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/02/03 00:28:55 by papilaz           #+#    #+#             */
-/*   Updated: 2026/02/04 18:24:18 by papilaz          ###   ########.fr       */
+/*   Updated: 2026/02/04 18:28:51 by papilaz          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -71,9 +71,9 @@ void	print_disorder_float(float nbr)
 	ft_putnbr(nbr);
 	print_erreur(ft_itoa(nbr * 100));
 	print_erreur(".");
-	print_erreur(ft_itoa(nbr * 100));
+	print_erreur(ft_itoa(nbr / 10));
 	print_erreur("%\n");
-	printf("\nprintf %.2f\n" ,nbr * 100);
+	printf("\nprintf %.4f\n" ,nbr * 100);
 }
 
 int	print_bench(int flag, float disorder, char **argv, t_bench **bench)

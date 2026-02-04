@@ -6,7 +6,7 @@
 /*   By: papilaz <papilaz@student.42lyon.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/01/06 16:02:47 by papilaz           #+#    #+#             */
-/*   Updated: 2026/02/04 17:57:58 by papilaz          ###   ########.fr       */
+/*   Updated: 2026/02/04 18:30:53 by papilaz          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,19 +16,17 @@ int	select_algo(t_list **stack_a, t_list **stack_b, char **argv,
 		t_bench **bench)
 {
 	float	disorder;
-	int		flag_select;
 
-	flag_select = (*stack_a)->flag;
 	disorder = compute_disorder(*stack_a);
 	if (disorder == 0 || ft_lstsize(*stack_a) == 1)
-		return (print_bench(flag_select, disorder, argv, bench));
-	if (flag_select == 1)
+		return (print_bench((*stack_a)->flag, disorder, argv, bench));
+	if ((*stack_a)->flag == 1)
 		selection_sort(stack_a, stack_b, bench);
-	if (flag_select == 2)
+	if ((*stack_a)->flag == 2)
 		chunk_sort(stack_a, stack_b, bench);
-	if (flag_select == 3)
+	if ((*stack_a)->flag == 3)
 		radix_sort(stack_a, stack_b, bench);
-	if (flag_select == 0 || flag_select == 4)
+	if ((*stack_a)->flag == 0 || (*stack_a)->flag == 4)
 	{
 		if (disorder < 0.2)
 			selection_sort(stack_a, stack_b, bench);
@@ -37,7 +35,7 @@ int	select_algo(t_list **stack_a, t_list **stack_b, char **argv,
 		else
 			radix_sort(stack_a, stack_b, bench);
 	}
-	print_bench(flag_select, disorder, argv, bench);
+	print_bench((*stack_a)->flag, disorder, argv, bench);
 	free(*bench);
 	return (0);
 }
