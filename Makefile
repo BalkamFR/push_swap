@@ -3,11 +3,9 @@ NAME        = push_swap
 
 
 OBJ_DIR     = obj
-PRINTF_DIR  = ft_printf
 INC_DIR     = includes
 
 
-PRINTF_LIB  = $(PRINTF_DIR)/libftprintf.a
 
 
 # CC          = cc
@@ -15,23 +13,25 @@ CFLAGS      = -Wall -Wextra -Werror -g3
 CFLAGS      = -g3
 
 
-INCLUDES    = -I. -I$(PRINTF_DIR)/includes -Iutils
+INCLUDES    = -I./includes -Iutils
 
 SRCS        = main.c \
-              parsing.c \
-              create_stack.c \
-              operations/swap.c \
-			  operations/push.c \
-			  operations/rotate.c \
-			  operations/reverse.c \
-              utils/ft_split.c \
-              utils/basics.c \
-              utils/list.c \
-			  algos/simple_select.c \
-			  algos/medium_chunk.c \
-			  algos/complex_radix.c \
-			  disorder.c
-
+	parsing.c \
+	create_stack.c \
+	operations/swap.c \
+	operations/push.c \
+	operations/rotate.c \
+	operations/reverse.c \
+	utils/ft_split.c \
+	utils/basics.c \
+	utils/list.c \
+	utils/list_2.c \
+	utils/ft_itoa.c \
+	algos/simple_select.c \
+	algos/medium_chunk.c \
+	algos/complex_radix.c \
+	disorder.c \
+	bench.c \
 
 
 OBJS        = $(addprefix $(OBJ_DIR)/, $(SRCS:.c=.o))
@@ -47,8 +47,7 @@ $(NAME): $(OBJS) $(PRINTF_LIB)
 	$(CC) $(CFLAGS) $(OBJS) -L$(PRINTF_DIR) -lftprintf -o $(NAME)
 
 
-$(PRINTF_LIB):
-	@make -C $(PRINTF_DIR)
+
 
 
 $(OBJ_DIR)/%.o: %.c
@@ -62,11 +61,9 @@ $(OBJ_DIR)/%.o: %.c
 
 clean:
 	@rm -rf $(OBJ_DIR)
-	@make -C $(PRINTF_DIR) clean
 
 fclean: clean
 	@rm -f $(NAME)
-	@make -C $(PRINTF_DIR) fclean
 
 re: fclean all
 

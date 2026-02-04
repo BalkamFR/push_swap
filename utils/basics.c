@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   basics.c                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ajeloyan <ajeloyan@student.42.fr>          +#+  +:+       +#+        */
+/*   By: papilaz <papilaz@student.42lyon.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/01/06 17:35:49 by papilaz           #+#    #+#             */
-/*   Updated: 2026/01/16 16:57:18 by ajeloyan         ###   ########.fr       */
+/*   Updated: 2026/02/03 21:33:40 by papilaz          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -56,16 +56,6 @@ int	ft_putnbr(int n)
 	return (i);
 }
 
-int	ft_strlen(char *str)
-{
-	int	i;
-
-	i = 0;
-	while (str[i])
-		i++;
-	return (i);
-}
-
 int	ft_atoi(const char *nptr)
 {
 	int	sign;
@@ -94,13 +84,11 @@ int	ft_atoi(const char *nptr)
 
 int	ft_strcmp_ps(char *str, char *str2)
 {
-	int i;
+	int	i;
 
 	i = 0;
 	while (str[i] || str2[i])
 	{
-		// if (str[i] < '0' && str[i] > '9')
-		// 	return (1);
 		if (str[i] != str2[i])
 			return (0);
 		i++;

@@ -3,14 +3,14 @@
 /*                                                        :::      ::::::::   */
 /*   simple_select.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ajeloyan <ajeloyan@student.42.fr>          +#+  +:+       +#+        */
+/*   By: papilaz <papilaz@student.42lyon.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/01/16 18:02:45 by ajeloyan          #+#    #+#             */
-/*   Updated: 2026/01/18 18:23:01 by ajeloyan         ###   ########.fr       */
+/*   Updated: 2026/02/03 21:32:26 by papilaz          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "push_swap.h"
+#include "../push_swap.h"
 
 int	check_min_pos(t_list *stack_a, int res)
 {
@@ -39,9 +39,9 @@ int	check_min(t_list *stack_a)
 	return (res);
 }
 
-void	selection_sort(t_list **stack_a, t_list **stack_b)
+void	selection_sort(t_list **stack_a, t_list **stack_b, t_bench **bench)
 {
-	int min;
+	int	min;
 
 	while (ft_lstsize(*stack_a) > 1)
 	{
@@ -49,12 +49,12 @@ void	selection_sort(t_list **stack_a, t_list **stack_b)
 		while ((*stack_a)->content != min)
 		{
 			if (check_min_pos(*stack_a, min) > (ft_lstsize(*stack_a) / 2))
-				ft_reverse_rotate_a(stack_a);
+				ft_reverse_rotate_a(stack_a, bench);
 			else
-				ft_rotate_a(stack_a);
+				ft_rotate_a(stack_a, bench);
 		}
-		ft_push_b(stack_a, stack_b);
+		ft_push_b(stack_a, stack_b, bench);
 	}
 	while (ft_lstsize(*stack_b) > 0)
-		ft_push_a(stack_a, stack_b);
+		ft_push_a(stack_a, stack_b, bench);
 }

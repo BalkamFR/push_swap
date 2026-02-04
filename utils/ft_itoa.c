@@ -6,11 +6,11 @@
 /*   By: papilaz <papilaz@student.42lyon.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/11/06 15:26:44 by papilaz           #+#    #+#             */
-/*   Updated: 2026/01/06 17:36:27 by papilaz          ###   ########.fr       */
+/*   Updated: 2026/02/03 19:05:01 by papilaz          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "libft.h"
+#include "../push_swap.h"
 
 static int	ft_compt_all_number(long n)
 {
@@ -37,7 +37,7 @@ static void	ft_putnbr_add_data(long nb, char *tab)
 		ft_putnbr_add_data(nb / 10, tab - 1);
 }
 
-char	*ft_itoa(int n)
+char	*ft_itoa(long int n)
 {
 	char	*res;
 	long	len;

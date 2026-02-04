@@ -6,7 +6,7 @@
 /*   By: papilaz <papilaz@student.42lyon.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/01/16 15:09:09 by ajeloyan          #+#    #+#             */
-/*   Updated: 2026/01/24 20:42:21 by papilaz          ###   ########.fr       */
+/*   Updated: 2026/02/03 21:33:00 by papilaz          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,14 +27,16 @@ static void	ft_push(t_list **stack_a, t_list **stack_b)
 	free(temp);
 }
 
-void	ft_push_b(t_list **stack_a, t_list **stack_b)
+void	ft_push_b(t_list **stack_a, t_list **stack_b, t_bench **bench)
 {
 	ft_push(stack_a, stack_b);
+	(*bench)->nbr_pb = (*bench)->nbr_pb + 1;
 	ft_putstr("pb\n");
 }
 
-void	ft_push_a(t_list **stack_a, t_list **stack_b)
+void	ft_push_a(t_list **stack_a, t_list **stack_b, t_bench **bench)
 {
 	ft_push(stack_b, stack_a);
+	(*bench)->nbr_pa = (*bench)->nbr_pa + 1;
 	ft_putstr("pa\n");
 }

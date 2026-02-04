@@ -6,7 +6,7 @@
 /*   By: papilaz <papilaz@student.42lyon.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/01/06 17:37:27 by papilaz           #+#    #+#             */
-/*   Updated: 2026/01/24 17:54:38 by papilaz          ###   ########.fr       */
+/*   Updated: 2026/02/03 21:36:04 by papilaz          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -71,47 +71,10 @@ int	ft_lstsize(t_list *lst)
 
 	i = 0;
 	tmp = lst;
-
 	while (tmp)
 	{
 		tmp = tmp->next;
 		i++;
 	}
 	return (i);
-}
-
-void	ft_lstclear(t_list **lst)
-{
-	t_list	*tmp;
-	t_list	*next;
-
-	tmp = *lst;
-	while (tmp)
-	{
-		next = tmp->next;
-		free(tmp);
-		tmp = next;
-	}
-	*lst = NULL;
-}
-t_list	*ft_lstlast(t_list *lst)
-{
-	int		size;
-	int		i;
-	t_list	*tmp;
-
-	i = 0;
-	tmp = lst;
-	size = ft_lstsize(lst);
-	while (i < size - 1 && tmp)
-	{
-		tmp = tmp->next;
-		i++;
-	}
-	return (tmp);
-}
-
-void	ft_lstdelone(t_list *lst)
-{
-	free(lst);
 }

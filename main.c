@@ -3,74 +3,129 @@
 /*                                                        :::      ::::::::   */
 /*   main.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ajeloyan <ajeloyan@student.42.fr>          +#+  +:+       +#+        */
+/*   By: papilaz <papilaz@student.42lyon.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/01/06 16:02:47 by papilaz           #+#    #+#             */
-/*   Updated: 2026/02/02 22:37:58 by ajeloyan         ###   ########.fr       */
+/*   Updated: 2026/02/03 23:09:43 by papilaz          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
-void	select_algo(t_list **stack_a, t_list **stack_b)
+int	select_algo(t_list **stack_a, t_list **stack_b, char **argv,
+		t_bench **bench)
 {
 	float	disorder;
+	int		flag_select;
 
+	flag_select = (*stack_a)->flag;
 	disorder = compute_disorder(*stack_a);
-	if ((*stack_a)->flag == 1)
-	{
-		selection_sort(stack_a, stack_b);
-		return;
-	}
-	if ((*stack_a)->flag == 2)
-	{
-		chunk_sort(stack_a, stack_b);
-		return;	
-	}
-	if ((*stack_a)->flag == 3)
-	{
-		radix_sort(stack_a, stack_b);
-		return;
-	}
-	if ((*stack_a)->flag == 0 || (*stack_a)->flag == 4)
+	if (disorder == 0 || ft_lstsize(*stack_a) == 1)
+		return (print_bench(flag_select, disorder, argv, bench));
+	if (flag_select == 1)
+		selection_sort(stack_a, stack_b, bench);
+	if (flag_select == 2)
+		chunk_sort(stack_a, stack_b, bench);
+	if (flag_select == 3)
+		radix_sort(stack_a, stack_b, bench);
+	if (flag_select == 0 || flag_select == 4)
 	{
 		if (disorder < 0.2)
-		{
-			selection_sort(stack_a, stack_b);
-			// printf("select\n");
-		}
+			selection_sort(stack_a, stack_b, bench);
 		else if (disorder < 0.5 && disorder >= 0.2)
-		{
-			chunk_sort(stack_a, stack_b);
-			// printf("chunk\n");
-		}
+			chunk_sort(stack_a, stack_b, bench);
 		else
-		{
-			radix_sort(stack_a, stack_b);
-			// printf("radix\n");	
-		}
+			radix_sort(stack_a, stack_b, bench);
 	}
+	print_bench(flag_select, disorder, argv, bench);
+	free(*bench);
+	return (0);
 }
+
+t_bench	*create_list_bench(void)
+{
+	t_bench	*bench;
+
+	bench = malloc(sizeof(t_bench));
+	if (!bench)
+		return (0);
+	bench->flag = 0;
+	bench->disorder = 0;
+	bench->nbr_sa = 0;
+	bench->nbr_sb = 0;
+	bench->nbr_ss = 0;
+	bench->nbr_pa = 0;
+	bench->nbr_pb = 0;
+	bench->nbr_ra = 0;
+	bench->nbr_rb = 0;
+	bench->nbr_rr = 0;
+	bench->nbr_rra = 0;
+	bench->nbr_rrb = 0;
+	bench->nbr_rrr = 0;
+	return (bench);
+}
+
+int	parcing_check_arg(char **argv, int i, int a, int flag)
+{
+	int	check;
+
+	check = 0;
+	while (argv[i])
+	{
+		a = 0;
+		if (check_flag_tab(argv[i]) == 1 || check_flag_tab(argv[i]) == 2
+			|| check_flag_tab(argv[i]) == 3 || check_flag_tab(argv[i]) == 4)
+			flag++;
+		while (argv[i][a])
+		{
+			if (argv[i][a] > '0' && argv[i][a] < '9')
+				check++;
+			a++;
+		}
+		i++;
+	}
+	if (check >= 1)
+		return (1);
+	return (0);
+
+}
+int	parcing_check_erreur(int argc, char **argv)
+{
+	int	i;
+	int	a;
+	int	flag;
+
+	if (argc <= 1)
+		return (0);
+	i = 0;
+	flag = 0;
+	if (parcing_check_arg(argv, i, a, flag) == 1)
+		return(1);
+	return (0);
+}
+
 int	main(int argc, char **argv)
 {
 	t_list	*stack_a;
 	t_list	*stack_b;
+	t_bench	*bench;
+	float	disorder;
 
-	stack_a = NULL;
 	stack_b = NULL;
-	if (argc <= 1)
+	bench = create_list_bench();
+	if (parcing_check_erreur(argc, argv + 1) == 0 || !bench)
 	{
-		write(2, "Error\n", 6);
+		print_erreur("Error\n");
 		return (0);
 	}
 	stack_a = list_parsed(argv, argc);
 	if (stack_a == NULL)
+	{
+		free(bench);
 		return (0);
-	// ft_printf("-------------------------\n");
-	float	disorder;
+	}
 	disorder = compute_disorder(stack_a);
-	select_algo(&stack_a, &stack_b);
-	// ft_print_stack_list_2(stack_a, stack_b);
+	select_algo(&stack_a, &stack_b, argv, &bench);
 	ft_lstclear(&stack_a);
 	ft_lstclear(&stack_b);
 	return (1);

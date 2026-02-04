@@ -3,25 +3,14 @@
 /*                                                        :::      ::::::::   */
 /*   medium_chunk.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ajeloyan <ajeloyan@student.42.fr>          +#+  +:+       +#+        */
+/*   By: papilaz <papilaz@student.42lyon.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/01/24 17:23:25 by papilaz           #+#    #+#             */
-/*   Updated: 2026/02/02 23:15:46 by ajeloyan         ###   ########.fr       */
+/*   Updated: 2026/02/03 21:32:34 by papilaz          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-/*
-compter nbr chunk avec racine carre ok
-
-push les x premier index dans stack_b (les plus petit),
-puis les x + x index suivant faire ca en boucle,
-		1 2 3
-		index + chunk number
-si reste on push tout seul
-tri simple_select et push dans a fini
-*/
-
-#include "push_swap.h"
+#include "../push_swap.h"
 
 int	check_range_index(t_list *stack_a, int max)
 {
@@ -46,7 +35,7 @@ int	chunk_number(t_list *stack_a)
 
 	tot_number = ft_lstsize(stack_a);
 	res = 0;
-	while ((res * res) < tot_number)
+	while ((res * res) <= tot_number)
 		res++;
 	return (res);
 }
@@ -65,7 +54,8 @@ int	check_max(t_list *stack_b)
 	return (res);
 }
 
-void	chunk_sort_push_a(t_list **stack_a, t_list ** stack_b)
+static void	chunk_sort_push_a(t_list **stack_a, t_list **stack_b,
+		t_bench **bench)
 {
 	int	min;
 
@@ -75,56 +65,35 @@ void	chunk_sort_push_a(t_list **stack_a, t_list ** stack_b)
 		while ((*stack_b)->content != min)
 		{
 			if (check_min_pos(*stack_b, min) > (ft_lstsize(*stack_b) / 2))
-				ft_reverse_rotate_b(stack_b);
+				ft_reverse_rotate_b(stack_b, bench);
 			else
-				ft_rotate_b(stack_b);
+				ft_rotate_b(stack_b, bench);
 		}
-		ft_push_a(stack_a, stack_b);
+		ft_push_a(stack_a, stack_b, bench);
 	}
-}
-int check_good_index_pos(t_list *stack_a, int index_range)
-{
-	int count;
-	int size;
-	
-	size = ft_lstsize(stack_a);
-	count = 0;
-	while(stack_a && stack_a->index != index_range)
-	{
-		count++;
-		stack_a = stack_a->next;
-	}
-	if (count > size / 2)
-		return (0);
-	return (1);
 }
 
-void	chunk_sort(t_list **stack_a, t_list **stack_b)
+void	chunk_sort(t_list **stack_a, t_list **stack_b, t_bench **bench)
 {
-	int	range_res;
 	int	index_range;
 	int	i;
-	int	rotate_res;
+	int	taugmentation;
 
+	taugmentation = chunk_number(*stack_a);
 	i = 0;
 	index_range = chunk_number(*stack_a);
 	while (*stack_a)
 	{
 		while (i < index_range && *stack_a)
 		{
-			rotate_res = check_good_index_pos(*stack_a, index_range);
 			while ((*stack_a)->index >= index_range)
 			{
-				if (rotate_res == 0)
-					ft_reverse_rotate_a(stack_a);
-				else
-					ft_rotate_a(stack_a);
+				ft_rotate_a(stack_a, bench);
 			}
-			ft_push_b(stack_a, stack_b);
+			ft_push_b(stack_a, stack_b, bench);
 			i++;
 		}
-		index_range = index_range + index_range;
+		index_range = index_range + taugmentation;
 	}
-	chunk_sort_push_a(stack_a, stack_b);
+	chunk_sort_push_a(stack_a, stack_b, bench);
 }
-

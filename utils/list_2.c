@@ -1,50 +1,30 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_bonus.c                                         :+:      :+:    :+:   */
+/*   list_2.c                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: papilaz <papilaz@student.42lyon.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/11/10 17:06:31 by papilaz           #+#    #+#             */
-/*   Updated: 2025/11/13 10:59:45 by papilaz          ###   ########.fr       */
+/*   Created: 2026/02/03 21:35:53 by papilaz           #+#    #+#             */
+/*   Updated: 2026/02/03 21:37:10 by papilaz          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "libft.h"
+#include "../push_swap.h"
 
-t_list	*ft_lstnew(void *content)
+void	ft_lstclear(t_list **lst)
 {
-	t_list	*new_node;
-
-	new_node = malloc(sizeof(t_list));
-	if (!new_node)
-		return (NULL);
-	new_node->content = content;
-	new_node->next = NULL;
-	return (new_node);
-}
-
-void	ft_lstadd_front(t_list **lst, t_list *new)
-{
-	if (!lst || !new)
-		return ;
-	new->next = *lst;
-	*lst = new;
-}
-
-int	ft_lstsize(t_list *lst)
-{
-	int		i;
 	t_list	*tmp;
+	t_list	*next;
 
-	i = 0;
-	tmp = lst;
+	tmp = *lst;
 	while (tmp)
 	{
-		tmp = tmp->next;
-		i++;
+		next = tmp->next;
+		free(tmp);
+		tmp = next;
 	}
-	return (i);
+	*lst = NULL;
 }
 
 t_list	*ft_lstlast(t_list *lst)
@@ -64,17 +44,15 @@ t_list	*ft_lstlast(t_list *lst)
 	return (tmp);
 }
 
-void	ft_lstadd_back(t_list **lst, t_list *new)
+void	ft_free_all(char **tab)
 {
-	t_list	*tmp;
+	int	i;
 
-	if (!lst || !*lst)
+	i = 0;
+	while (tab[i])
 	{
-		ft_lstadd_front(lst, new);
-		return ;
+		free(tab[i]);
+		i++;
 	}
-	tmp = *lst;
-	while (tmp->next)
-		tmp = tmp->next;
-	tmp->next = new;
+	free(tab);
 }
