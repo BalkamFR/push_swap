@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   parsing.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: papilaz <papilaz@student.42lyon.fr>        +#+  +:+       +#+        */
+/*   By: ajeloyan <ajeloyan@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/01/06 18:32:18 by papilaz           #+#    #+#             */
-/*   Updated: 2026/02/03 22:32:02 by papilaz          ###   ########.fr       */
+/*   Updated: 2026/02/04 17:23:14 by ajeloyan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -64,24 +64,39 @@ int	check_doubles(char **argv)
 	}
 	return (0);
 }
+int	check_max_min(char **argv)
+{
+	int	i;
 
+	i = 0;
+	while (argv[i])
+	{
+		if ((ft_atoi(argv[i]) < -2147483648) || (ft_atoi(argv[i]) > 2147483647))
+			return (1);
+		i++;
+	}
+	return (0);
+}
 int	check_valid(char **argv)
 {
 	int	i;
-	int	count;
 	int	j;
 
 	i = 0;
 	while (argv[i])
 	{
 		j = 0;
-		count = 0;
 		while (argv[i][j] && check_flag_tab(argv[i]) == 0)
 		{
-			if (argv[i][j] == '-' && (argv[i][j + 1] > '0' && argv[i][j
-					+ 1] < '9'))
-				count++;
-			if ((argv[i][j] < '0' || argv[i][j] > '9') && count > 1)
+			if (argv[i][j] == '-' && (argv[i][j + 1] < '0' || argv[i][j
+					+ 1] > '9'))
+				return (1);
+			else if (argv[i][j] >= '0' && argv[i][j] <= '9' && (argv[i][j
+					+ 1] < '0' || argv[i][j + 1] > '9') && argv[i][j
+				+ 1] != '\0')
+				return (1);
+			else if ((argv[i][j] < '0' || argv[i][j] > '9')
+				&& argv[i][j] != '-')
 				return (1);
 			j++;
 		}
@@ -89,6 +104,50 @@ int	check_valid(char **argv)
 	}
 	return (0);
 }
+
+int	parcing_check_flag(char **argv)
+{
+	int	flag;
+	int	i;
+
+	i = 0;
+	flag = 0;
+	while (argv[i])
+	{
+		if (check_flag_tab(argv[i]) == 1 || check_flag_tab(argv[i]) == 2
+			|| check_flag_tab(argv[i]) == 3 || check_flag_tab(argv[i]) == 4)
+			flag++;
+		i++;
+	}
+	if (flag > 1 || check_valid(argv) == 1)
+		return (1);
+	return (0);
+}
+
+int	parcing_check_erreur(int argc, char **argv)
+{
+	int	i;
+	int	a;
+	int	flag;
+
+	if (argc <= 1)
+		return (0);
+	i = 0;
+	flag = 0;
+	if (parcing_check_flag(argv) == 1 || check_valid(argv) == 1
+		|| check_doubles(argv) == 1 || check_max_min(argv) == 1)
+		return (1);
+	return (0);
+}
+
+/*
+	check les negatif
+	check que c est bien un chiffre check que si un
+		- c est bien pour un flag et pas autre
+	check que c est pas que un flag
+
+
+*/
 
 t_list	*list_parsed(char **argv, int argc)
 {
@@ -98,7 +157,7 @@ t_list	*list_parsed(char **argv, int argc)
 	if (argc == 2)
 	{
 		new = ft_split(argv[1], ' ');
-		if (check_doubles(argv) == 1 || check_valid(new) == 1)
+		if (parcing_check_erreur(argc, new) == 1)
 		{
 			print_erreur("Error\n");
 			return (NULL);
@@ -108,7 +167,7 @@ t_list	*list_parsed(char **argv, int argc)
 	}
 	else
 	{
-		if (check_doubles(argv + 1) == 1 || check_valid(argv + 1) == 1)
+		if (parcing_check_erreur(argc, argv + 1) == 1)
 		{
 			print_erreur("Error\n");
 			return (NULL);

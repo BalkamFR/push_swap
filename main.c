@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   main.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: papilaz <papilaz@student.42lyon.fr>        +#+  +:+       +#+        */
+/*   By: ajeloyan <ajeloyan@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/01/06 16:02:47 by papilaz           #+#    #+#             */
-/*   Updated: 2026/02/03 23:09:43 by papilaz          ###   ########.fr       */
+/*   Updated: 2026/02/04 16:24:20 by ajeloyan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -65,44 +65,6 @@ t_bench	*create_list_bench(void)
 	return (bench);
 }
 
-int	parcing_check_arg(char **argv, int i, int a, int flag)
-{
-	int	check;
-
-	check = 0;
-	while (argv[i])
-	{
-		a = 0;
-		if (check_flag_tab(argv[i]) == 1 || check_flag_tab(argv[i]) == 2
-			|| check_flag_tab(argv[i]) == 3 || check_flag_tab(argv[i]) == 4)
-			flag++;
-		while (argv[i][a])
-		{
-			if (argv[i][a] > '0' && argv[i][a] < '9')
-				check++;
-			a++;
-		}
-		i++;
-	}
-	if (check >= 1)
-		return (1);
-	return (0);
-
-}
-int	parcing_check_erreur(int argc, char **argv)
-{
-	int	i;
-	int	a;
-	int	flag;
-
-	if (argc <= 1)
-		return (0);
-	i = 0;
-	flag = 0;
-	if (parcing_check_arg(argv, i, a, flag) == 1)
-		return(1);
-	return (0);
-}
 
 int	main(int argc, char **argv)
 {
@@ -113,7 +75,7 @@ int	main(int argc, char **argv)
 
 	stack_b = NULL;
 	bench = create_list_bench();
-	if (parcing_check_erreur(argc, argv + 1) == 0 || !bench)
+	if(!bench)
 	{
 		print_erreur("Error\n");
 		return (0);

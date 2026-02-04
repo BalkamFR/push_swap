@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   basics.c                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: papilaz <papilaz@student.42lyon.fr>        +#+  +:+       +#+        */
+/*   By: ajeloyan <ajeloyan@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/01/06 17:35:49 by papilaz           #+#    #+#             */
-/*   Updated: 2026/02/03 21:33:40 by papilaz          ###   ########.fr       */
+/*   Updated: 2026/02/04 17:02:57 by ajeloyan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -56,11 +56,11 @@ int	ft_putnbr(int n)
 	return (i);
 }
 
-int	ft_atoi(const char *nptr)
+long	ft_atoi(const char *nptr)
 {
-	int	sign;
-	int	res;
-	int	i;
+	long	sign;
+	long	res;
+	long	i;
 
 	i = 0;
 	sign = 1;

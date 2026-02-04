@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   bench.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: papilaz <papilaz@student.42lyon.fr>        +#+  +:+       +#+        */
+/*   By: ajeloyan <ajeloyan@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/02/03 00:28:55 by papilaz           #+#    #+#             */
-/*   Updated: 2026/02/03 22:14:26 by papilaz          ###   ########.fr       */
+/*   Updated: 2026/02/04 17:24:33 by ajeloyan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -69,6 +69,7 @@ int	print_bench(int flag, float disorder, char **argv, t_bench **bench)
 {
 	if (check_bench(argv) == 0)
 		return(0) ;
+	print_erreur("[bench] disorder: %f\n");
 	if (flag == 1)
 		print_erreur("[bench] strategy: Simple O(n2)\n");
 	if (flag == 2)
@@ -78,13 +79,12 @@ int	print_bench(int flag, float disorder, char **argv, t_bench **bench)
 	if (flag == 0 || flag == 4)
 	{
 		if (disorder < 0.2)
-			print_erreur("[bench] Adaptive / O(n2)\n");
+			print_erreur("[bench] strategy: Adaptive / O(n2)\n");
 		else if (disorder < 0.5 && disorder >= 0.2)
-			print_erreur("[bench] Adaptive / O(n√n)\n");
+			print_erreur("[bench] strategy: Adaptive / O(n√n)\n");
 		else
-			print_erreur("[bench] Adaptive / O(n log n)\n");
+			print_erreur("[bench] strategy: Adaptive / O(n log n)\n");
 	}
-	print_erreur("[bench] disorder: %f\n");
 	print_erreur("[bench] total_ops:  ");
 	print_erreur(ft_itoa((*bench)->nbr_sa + (*bench)->nbr_sb + (*bench)->nbr_ss
 			+ (*bench)->nbr_pa + (*bench)->nbr_pb + (*bench)->nbr_ra

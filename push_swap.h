@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   push_swap.h                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: papilaz <papilaz@student.42lyon.fr>        +#+  +:+       +#+        */
+/*   By: ajeloyan <ajeloyan@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/01/06 17:37:52 by papilaz           #+#    #+#             */
-/*   Updated: 2026/02/03 22:32:05 by papilaz          ###   ########.fr       */
+/*   Updated: 2026/02/04 17:03:24 by ajeloyan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -47,9 +47,8 @@ typedef struct s_list
 int					ft_putstr(char *tab);
 int					ft_putchar(char c);
 int					ft_putnbr(int nb);
-int					ft_atoi(const char *nptr);
+long				ft_atoi(const char *nptr);
 char				**ft_split(char *s, char c);
-int					ft_strlen(char *str);
 int					ft_strcmp_ps(char *str, char *str2);
 void				ft_free_all(char **tab);
 t_list				*ft_lstnew(int nbr, int index_nbr);
