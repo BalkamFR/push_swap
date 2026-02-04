@@ -3,10 +3,10 @@
 #                                                         :::      ::::::::    #
 #    Makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: papilaz <papilaz@student.42lyon.fr>        +#+  +:+       +#+         #
+#    By: ajeloyan <ajeloyan@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2026/02/03 00:28:55 by papilaz           #+#    #+#              #
-#    Updated: 2026/02/04 20:28:00 by papilaz          ###   ########.fr        #
+#    Updated: 2026/02/04 20:34:27 by ajeloyan         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -36,8 +36,7 @@ SRCS        = main.c \
               utils/ft_itoa.c \
               algos/simple_select.c \
               algos/medium_chunk.c \
-              algos/complex_radix.c \
-              algos/mini_algos.c
+              algos/complex_radix.c
 
 OBJS        = $(addprefix $(OBJ_DIR)/, $(SRCS:.c=.o))
 

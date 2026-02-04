@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   simple_select.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: papilaz <papilaz@student.42lyon.fr>        +#+  +:+       +#+        */
+/*   By: ajeloyan <ajeloyan@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/01/16 18:02:45 by ajeloyan          #+#    #+#             */
-/*   Updated: 2026/02/04 17:55:22 by papilaz          ###   ########.fr       */
+/*   Updated: 2026/02/04 20:34:16 by ajeloyan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,6 +23,21 @@ int	check_min_pos(t_list *stack_a, int res)
 		count++;
 	}
 	return (count);
+}
+
+void	vshort_sort(t_list **stack_a, t_bench **bench)
+{
+	if ((*stack_a)->index == 2)
+	{
+		ft_swap_a(*stack_a, bench);
+		ft_reverse_rotate_a(stack_a, bench);
+	}
+	else if ((*stack_a)->index == 1 && (*stack_a)->next->index != 0)
+		ft_reverse_rotate_a(stack_a, bench);
+	else if ((*stack_a)->index == 1 && (*stack_a)->next->index == 0)
+		ft_swap_a(*stack_a, bench);
+	else if ((*stack_a)->index == 0)
+		ft_rotate_a(stack_a, bench);
 }
 
 static int	check_min(t_list *stack_a)
