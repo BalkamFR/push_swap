@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   parsing.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ajeloyan <ajeloyan@student.42.fr>          +#+  +:+       +#+        */
+/*   By: papilaz <papilaz@student.42lyon.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/01/06 18:32:18 by papilaz           #+#    #+#             */
-/*   Updated: 2026/02/04 17:23:14 by ajeloyan         ###   ########.fr       */
+/*   Updated: 2026/02/04 17:41:49 by papilaz          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -64,6 +64,7 @@ int	check_doubles(char **argv)
 	}
 	return (0);
 }
+
 int	check_max_min(char **argv)
 {
 	int	i;
@@ -77,6 +78,7 @@ int	check_max_min(char **argv)
 	}
 	return (0);
 }
+
 int	check_valid(char **argv)
 {
 	int	i;
@@ -103,77 +105,4 @@ int	check_valid(char **argv)
 		i++;
 	}
 	return (0);
-}
-
-int	parcing_check_flag(char **argv)
-{
-	int	flag;
-	int	i;
-
-	i = 0;
-	flag = 0;
-	while (argv[i])
-	{
-		if (check_flag_tab(argv[i]) == 1 || check_flag_tab(argv[i]) == 2
-			|| check_flag_tab(argv[i]) == 3 || check_flag_tab(argv[i]) == 4)
-			flag++;
-		i++;
-	}
-	if (flag > 1 || check_valid(argv) == 1)
-		return (1);
-	return (0);
-}
-
-int	parcing_check_erreur(int argc, char **argv)
-{
-	int	i;
-	int	a;
-	int	flag;
-
-	if (argc <= 1)
-		return (0);
-	i = 0;
-	flag = 0;
-	if (parcing_check_flag(argv) == 1 || check_valid(argv) == 1
-		|| check_doubles(argv) == 1 || check_max_min(argv) == 1)
-		return (1);
-	return (0);
-}
-
-/*
-	check les negatif
-	check que c est bien un chiffre check que si un
-		- c est bien pour un flag et pas autre
-	check que c est pas que un flag
-
-
-*/
-
-t_list	*list_parsed(char **argv, int argc)
-{
-	char	**new;
-	t_list	*newlist;
-
-	if (argc == 2)
-	{
-		new = ft_split(argv[1], ' ');
-		if (parcing_check_erreur(argc, new) == 1)
-		{
-			print_erreur("Error\n");
-			return (NULL);
-		}
-		newlist = create_stack(new);
-		ft_free_all(new);
-	}
-	else
-	{
-		if (parcing_check_erreur(argc, argv + 1) == 1)
-		{
-			print_erreur("Error\n");
-			return (NULL);
-		}
-		newlist = create_stack(argv + 1);
-	}
-	ft_index(&newlist);
-	return (newlist);
 }

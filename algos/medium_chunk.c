@@ -3,16 +3,16 @@
 /*                                                        :::      ::::::::   */
 /*   medium_chunk.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ajeloyan <ajeloyan@student.42.fr>          +#+  +:+       +#+        */
+/*   By: papilaz <papilaz@student.42lyon.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/01/24 17:23:25 by papilaz           #+#    #+#             */
-/*   Updated: 2026/02/04 17:37:04 by ajeloyan         ###   ########.fr       */
+/*   Updated: 2026/02/04 17:54:13 by papilaz          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../push_swap.h"
 
-int	check_range_index(t_list *stack_a, int max)
+static int	check_range_index(t_list *stack_a, int max)
 {
 	int	res;
 
@@ -28,7 +28,7 @@ int	check_range_index(t_list *stack_a, int max)
 	return (0);
 }
 
-int	chunk_number(t_list *stack_a)
+static int	chunk_number(t_list *stack_a)
 {
 	int	tot_number;
 	int	res;
@@ -40,7 +40,7 @@ int	chunk_number(t_list *stack_a)
 	return (res);
 }
 
-int	check_max(t_list *stack_b)
+static int	check_max(t_list *stack_b)
 {
 	int	res;
 
@@ -97,10 +97,3 @@ void	chunk_sort(t_list **stack_a, t_list **stack_b, t_bench **bench)
 	}
 	chunk_sort_push_a(stack_a, stack_b, bench);
 }
-
-
-
-// /*
-// 	3 2 1
-// || | 
-// */

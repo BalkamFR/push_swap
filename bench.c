@@ -3,16 +3,16 @@
 /*                                                        :::      ::::::::   */
 /*   bench.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ajeloyan <ajeloyan@student.42.fr>          +#+  +:+       +#+        */
+/*   By: papilaz <papilaz@student.42lyon.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/02/03 00:28:55 by papilaz           #+#    #+#             */
-/*   Updated: 2026/02/04 17:24:33 by ajeloyan         ###   ########.fr       */
+/*   Updated: 2026/02/04 18:24:18 by papilaz          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
-int	check_bench(char **argv)
+static int	check_bench(char **argv)
 {
 	int	i;
 
@@ -65,11 +65,22 @@ static void	print_bench_operation(t_bench *bench)
 	print_erreur("\n");
 }
 
+void	print_disorder_float(float nbr)
+{
+	print_erreur("[bench] disorder: ");
+	ft_putnbr(nbr);
+	print_erreur(ft_itoa(nbr * 100));
+	print_erreur(".");
+	print_erreur(ft_itoa(nbr * 100));
+	print_erreur("%\n");
+	printf("\nprintf %.2f\n" ,nbr * 100);
+}
+
 int	print_bench(int flag, float disorder, char **argv, t_bench **bench)
 {
+	print_disorder_float(disorder);
 	if (check_bench(argv) == 0)
-		return(0) ;
-	print_erreur("[bench] disorder: %f\n");
+		return (0);
 	if (flag == 1)
 		print_erreur("[bench] strategy: Simple O(n2)\n");
 	if (flag == 2)
@@ -91,5 +102,5 @@ int	print_bench(int flag, float disorder, char **argv, t_bench **bench)
 			+ (*bench)->nbr_rb + (*bench)->nbr_rr + (*bench)->nbr_rra
 			+ (*bench)->nbr_rrb + (*bench)->nbr_rrr));
 	print_bench_operation(*bench);
-	return(1);
+	return (1);
 }

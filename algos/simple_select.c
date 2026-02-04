@@ -6,7 +6,7 @@
 /*   By: papilaz <papilaz@student.42lyon.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/01/16 18:02:45 by ajeloyan          #+#    #+#             */
-/*   Updated: 2026/02/03 21:32:26 by papilaz          ###   ########.fr       */
+/*   Updated: 2026/02/04 17:55:22 by papilaz          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,7 +25,7 @@ int	check_min_pos(t_list *stack_a, int res)
 	return (count);
 }
 
-int	check_min(t_list *stack_a)
+static int	check_min(t_list *stack_a)
 {
 	int	res;
 

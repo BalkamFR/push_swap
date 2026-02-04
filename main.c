@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   main.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ajeloyan <ajeloyan@student.42.fr>          +#+  +:+       +#+        */
+/*   By: papilaz <papilaz@student.42lyon.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/01/06 16:02:47 by papilaz           #+#    #+#             */
-/*   Updated: 2026/02/04 16:24:20 by ajeloyan         ###   ########.fr       */
+/*   Updated: 2026/02/04 17:57:58 by papilaz          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -65,7 +65,6 @@ t_bench	*create_list_bench(void)
 	return (bench);
 }
 
-
 int	main(int argc, char **argv)
 {
 	t_list	*stack_a;
@@ -75,7 +74,7 @@ int	main(int argc, char **argv)
 
 	stack_b = NULL;
 	bench = create_list_bench();
-	if(!bench)
+	if (!bench)
 	{
 		print_erreur("Error\n");
 		return (0);

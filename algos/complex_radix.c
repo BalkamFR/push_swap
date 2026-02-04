@@ -6,13 +6,13 @@
 /*   By: papilaz <papilaz@student.42lyon.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/01/27 23:28:14 by armenag           #+#    #+#             */
-/*   Updated: 2026/02/03 21:22:03 by papilaz          ###   ########.fr       */
+/*   Updated: 2026/02/04 17:52:59 by papilaz          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../push_swap.h"
 
-int	check_index_max(t_list *stack_a)
+static int	check_index_max(t_list *stack_a)
 {
 	int	index_max;
 
@@ -26,7 +26,7 @@ int	check_index_max(t_list *stack_a)
 	return (index_max);
 }
 
-int	binary_size(int index)
+static int	binary_size(int index)
 {
 	int	count;
 
@@ -39,7 +39,7 @@ int	binary_size(int index)
 	return (count);
 }
 
-void	sort_binary(t_list **stack_a, t_list **stack_b, int move_on,
+static void	sort_binary(t_list **stack_a, t_list **stack_b, int move_on,
 		t_bench **bench)
 {
 	int	i;

@@ -1,22 +1,17 @@
 
 NAME        = push_swap
 
-
 OBJ_DIR     = obj
 INC_DIR     = includes
 
-
-
-
-# CC          = cc
 CFLAGS      = -Wall -Wextra -Werror -g3
 CFLAGS      = -g3
-
 
 INCLUDES    = -I./includes -Iutils
 
 SRCS        = main.c \
 	parsing.c \
+	parsing_2.c \
 	create_stack.c \
 	operations/swap.c \
 	operations/push.c \
@@ -46,18 +41,11 @@ all: $(NAME)
 $(NAME): $(OBJS) $(PRINTF_LIB)
 	$(CC) $(CFLAGS) $(OBJS) -L$(PRINTF_DIR) -lftprintf -o $(NAME)
 
-
-
-
-
 $(OBJ_DIR)/%.o: %.c
 	@mkdir -p $(dir $@)
 	$(CC) $(CFLAGS) $(INCLUDES) -MMD -MP -c $< -o $@
 
-
 -include $(DEPS)
-
-
 
 clean:
 	@rm -rf $(OBJ_DIR)
