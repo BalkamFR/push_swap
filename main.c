@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   main.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ajeloyan <ajeloyan@student.42.fr>          +#+  +:+       +#+        */
+/*   By: papilaz <papilaz@student.42lyon.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/01/06 16:02:47 by papilaz           #+#    #+#             */
-/*   Updated: 2026/02/04 19:21:27 by ajeloyan         ###   ########.fr       */
+/*   Updated: 2026/02/04 20:55:21 by papilaz          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,32 +20,42 @@ void	short_algos(t_list **stack_a, t_list **stack_b, t_bench **bench)
 		selection_sort(stack_a, stack_b, bench);
 }
 
+void	select_algo_adaptative(t_list **stack_a, t_list **stack_b,
+		t_bench **bench, int disorder)
+{
+	if (disorder < 0.2)
+		selection_sort(stack_a, stack_b, bench);
+	else if (disorder < 0.5 && disorder >= 0.2)
+		chunk_sort(stack_a, stack_b, bench);
+	else
+		radix_sort(stack_a, stack_b, bench);
+}
+
 int	select_algo(t_list **stack_a, t_list **stack_b, char **argv,
 		t_bench **bench)
 {
+	int		flags;
 	float	disorder;
 
+	flags = (*stack_a)->flag;
 	disorder = compute_disorder(*stack_a);
-	if (ft_lstsize(*stack_a) == 3 || ft_lstsize(*stack_a) == 5)
+	if ((ft_lstsize(*stack_a) == 3 || ft_lstsize(*stack_a) == 5) && (flags != 2
+			&& flags != 3))
+	{
 		short_algos(stack_a, stack_b, bench);
+		flags = 1;
+	}
 	else if (disorder == 0 || ft_lstsize(*stack_a) == 1)
 		return (print_bench((*stack_a)->flag, disorder, argv, bench));
-	else if ((*stack_a)->flag == 1)
+	else if (flags == 1)
 		selection_sort(stack_a, stack_b, bench);
-	else if ((*stack_a)->flag == 2)
+	else if (flags == 2)
 		chunk_sort(stack_a, stack_b, bench);
-	else if ((*stack_a)->flag == 3)
+	else if (flags == 3)
 		radix_sort(stack_a, stack_b, bench);
-	else if ((*stack_a)->flag == 0 || (*stack_a)->flag == 4)
-	{
-		if (disorder < 0.2)
-			selection_sort(stack_a, stack_b, bench);
-		else if (disorder < 0.5 && disorder >= 0.2)
-			chunk_sort(stack_a, stack_b, bench);
-		else
-			radix_sort(stack_a, stack_b, bench);
-	}
-	print_bench((*stack_a)->flag, disorder, argv, bench);
+	else if (flags == 0 || flags == 4)
+		select_algo_adaptative(stack_a, stack_b, bench, disorder);
+	print_bench(flags, disorder, argv, bench);
 	free(*bench);
 	return (0);
 }
