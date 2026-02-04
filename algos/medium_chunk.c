@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   medium_chunk.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: papilaz <papilaz@student.42lyon.fr>        +#+  +:+       +#+        */
+/*   By: ajeloyan <ajeloyan@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/01/24 17:23:25 by papilaz           #+#    #+#             */
-/*   Updated: 2026/02/03 21:32:34 by papilaz          ###   ########.fr       */
+/*   Updated: 2026/02/04 17:37:04 by ajeloyan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -77,9 +77,9 @@ void	chunk_sort(t_list **stack_a, t_list **stack_b, t_bench **bench)
 {
 	int	index_range;
 	int	i;
-	int	taugmentation;
+	int	index_inc;
 
-	taugmentation = chunk_number(*stack_a);
+	index_inc = chunk_number(*stack_a);
 	i = 0;
 	index_range = chunk_number(*stack_a);
 	while (*stack_a)
@@ -93,7 +93,14 @@ void	chunk_sort(t_list **stack_a, t_list **stack_b, t_bench **bench)
 			ft_push_b(stack_a, stack_b, bench);
 			i++;
 		}
-		index_range = index_range + taugmentation;
+		index_range = index_range + index_inc;
 	}
 	chunk_sort_push_a(stack_a, stack_b, bench);
 }
+
+
+
+// /*
+// 	3 2 1
+// || | 
+// */
