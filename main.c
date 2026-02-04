@@ -3,14 +3,22 @@
 /*                                                        :::      ::::::::   */
 /*   main.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: papilaz <papilaz@student.42lyon.fr>        +#+  +:+       +#+        */
+/*   By: ajeloyan <ajeloyan@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/01/06 16:02:47 by papilaz           #+#    #+#             */
-/*   Updated: 2026/02/04 18:30:53 by papilaz          ###   ########.fr       */
+/*   Updated: 2026/02/04 19:21:27 by ajeloyan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
+
+void	short_algos(t_list **stack_a, t_list **stack_b, t_bench **bench)
+{
+	if (ft_lstsize(*stack_a) == 3)
+		vshort_sort(stack_a, bench);
+	else if (ft_lstsize(*stack_a) == 5)
+		selection_sort(stack_a, stack_b, bench);
+}
 
 int	select_algo(t_list **stack_a, t_list **stack_b, char **argv,
 		t_bench **bench)
@@ -18,15 +26,17 @@ int	select_algo(t_list **stack_a, t_list **stack_b, char **argv,
 	float	disorder;
 
 	disorder = compute_disorder(*stack_a);
-	if (disorder == 0 || ft_lstsize(*stack_a) == 1)
+	if (ft_lstsize(*stack_a) == 3 || ft_lstsize(*stack_a) == 5)
+		short_algos(stack_a, stack_b, bench);
+	else if (disorder == 0 || ft_lstsize(*stack_a) == 1)
 		return (print_bench((*stack_a)->flag, disorder, argv, bench));
-	if ((*stack_a)->flag == 1)
+	else if ((*stack_a)->flag == 1)
 		selection_sort(stack_a, stack_b, bench);
-	if ((*stack_a)->flag == 2)
+	else if ((*stack_a)->flag == 2)
 		chunk_sort(stack_a, stack_b, bench);
-	if ((*stack_a)->flag == 3)
+	else if ((*stack_a)->flag == 3)
 		radix_sort(stack_a, stack_b, bench);
-	if ((*stack_a)->flag == 0 || (*stack_a)->flag == 4)
+	else if ((*stack_a)->flag == 0 || (*stack_a)->flag == 4)
 	{
 		if (disorder < 0.2)
 			selection_sort(stack_a, stack_b, bench);

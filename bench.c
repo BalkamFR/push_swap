@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   bench.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: papilaz <papilaz@student.42lyon.fr>        +#+  +:+       +#+        */
+/*   By: ajeloyan <ajeloyan@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/02/03 00:28:55 by papilaz           #+#    #+#             */
-/*   Updated: 2026/02/04 18:28:51 by papilaz          ###   ########.fr       */
+/*   Updated: 2026/02/04 20:09:59 by ajeloyan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -67,20 +67,27 @@ static void	print_bench_operation(t_bench *bench)
 
 void	print_disorder_float(float nbr)
 {
+	float	percent;
+	int		integer;
+	int		nbr_float;
+
+	percent = nbr * 100;
+	integer = (int)percent;
+	nbr_float = (int)((percent - integer) * 100 + 0.0001);
 	print_erreur("[bench] disorder: ");
-	ft_putnbr(nbr);
-	print_erreur(ft_itoa(nbr * 100));
+	ft_putnbr(integer);
 	print_erreur(".");
-	print_erreur(ft_itoa(nbr / 10));
+	if (nbr_float < 10)
+		print_erreur("0");
+	ft_putnbr(nbr_float);
 	print_erreur("%\n");
-	printf("\nprintf %.4f\n" ,nbr * 100);
 }
 
 int	print_bench(int flag, float disorder, char **argv, t_bench **bench)
 {
-	print_disorder_float(disorder);
 	if (check_bench(argv) == 0)
 		return (0);
+	print_disorder_float(disorder);
 	if (flag == 1)
 		print_erreur("[bench] strategy: Simple O(n2)\n");
 	if (flag == 2)

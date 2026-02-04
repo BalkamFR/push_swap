@@ -27,6 +27,7 @@ SRCS        = main.c \
 	algos/complex_radix.c \
 	disorder.c \
 	bench.c \
+	algos/mini_algos.c
 
 
 OBJS        = $(addprefix $(OBJ_DIR)/, $(SRCS:.c=.o))
