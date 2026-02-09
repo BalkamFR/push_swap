@@ -3,10 +3,10 @@
 #                                                         :::      ::::::::    #
 #    Makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: ajeloyan <ajeloyan@student.42.fr>          +#+  +:+       +#+         #
+#    By: papilaz <papilaz@student.42lyon.fr>        +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2026/02/03 00:28:55 by papilaz           #+#    #+#              #
-#    Updated: 2026/02/04 20:34:27 by ajeloyan         ###   ########.fr        #
+#    Updated: 2026/02/09 18:12:43 by papilaz          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -24,6 +24,7 @@ SRCS        = main.c \
               parsing_2.c \
               create_stack.c \
               disorder.c \
+              bench_2.c \
               bench.c \
               operations/swap.c \
               operations/push.c \

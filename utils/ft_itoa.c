@@ -6,7 +6,7 @@
 /*   By: papilaz <papilaz@student.42lyon.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/11/06 15:26:44 by papilaz           #+#    #+#             */
-/*   Updated: 2026/02/09 16:22:59 by papilaz          ###   ########.fr       */
+/*   Updated: 2026/02/09 17:40:14 by papilaz          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,7 +42,6 @@ char	*ft_itoa(long int n)
 	char	*res;
 	long	len;
 	long	nb;
-
 
 	nb = n;
 	len = ft_compt_all_number(n);

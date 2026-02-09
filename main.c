@@ -6,19 +6,11 @@
 /*   By: papilaz <papilaz@student.42lyon.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/01/06 16:02:47 by papilaz           #+#    #+#             */
-/*   Updated: 2026/02/09 16:16:55 by papilaz          ###   ########.fr       */
+/*   Updated: 2026/02/09 21:58:01 by papilaz          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
-
-void	short_algos(t_list **stack_a, t_list **stack_b, t_bench **bench)
-{
-	if (ft_lstsize(*stack_a) == 3)
-		vshort_sort(stack_a, bench);
-	else if (ft_lstsize(*stack_a) == 5)
-		selection_sort(stack_a, stack_b, bench);
-}
 
 void	select_algo_adaptative(t_list **stack_a, t_list **stack_b,
 		t_bench **bench, float disorder)
@@ -41,12 +33,6 @@ int	select_algo(t_list **stack_a, t_list **stack_b, char **argv,
 	disorder = compute_disorder(*stack_a);
 	if (disorder == 0 || ft_lstsize(*stack_a) == 1)
 		return (print_bench((*stack_a)->flag, disorder, argv, bench));
-	else if ((ft_lstsize(*stack_a) == 3 || ft_lstsize(*stack_a) == 5)
-		&& (flags != 2 && flags != 3))
-	{
-		short_algos(stack_a, stack_b, bench);
-		flags = 1;
-	}
 	else if (flags == 1)
 		selection_sort(stack_a, stack_b, bench);
 	else if (flags == 2)
@@ -82,30 +68,38 @@ t_bench	*create_list_bench(void)
 	return (bench);
 }
 
+void	ft_free_all_3(t_list **stack_a, t_list **stack_b, t_bench *bench)
+{
+	free(bench);
+	ft_lstclear(stack_a);
+	ft_lstclear(stack_b);
+}
+
 int	main(int argc, char **argv)
 {
 	t_list	*stack_a;
 	t_list	*stack_b;
 	t_bench	*bench;
-	float	disorder;
+	char	**new_argv;
 
 	stack_b = NULL;
 	bench = create_list_bench();
 	if (!bench)
 	{
 		print_erreur("Error\n");
-		return (0);
+		return (1);
 	}
 	stack_a = list_parsed(argv, argc);
 	if (stack_a == NULL || !stack_a)
 	{
 		free(bench);
-		return (0);
+		return (1);
 	}
-	disorder = compute_disorder(stack_a);
-	select_algo(&stack_a, &stack_b, argv, &bench);
-	free(bench);
-	ft_lstclear(&stack_a);
-	ft_lstclear(&stack_b);
-	return (1);
+	new_argv = create_args_clean(argc, argv);
+	if (!new_argv)
+		return (1);
+	select_algo(&stack_a, &stack_b, new_argv, &bench);
+	ft_free_all(new_argv);
+	ft_free_all_3(&stack_a, &stack_b, bench);
+	return (0);
 }

@@ -6,16 +6,15 @@
 /*   By: papilaz <papilaz@student.42lyon.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/02/04 17:46:45 by papilaz           #+#    #+#             */
-/*   Updated: 2026/02/09 15:58:09 by papilaz          ###   ########.fr       */
+/*   Updated: 2026/02/09 21:26:24 by papilaz          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef PUSH_SWAP_H
 # define PUSH_SWAP_H
 
+# include <stdio.h>
 # include <stdlib.h>
-#include "stdio.h"
-
 # include <unistd.h>
 
 typedef struct s_list
@@ -95,7 +94,6 @@ void				chunk_sort(t_list **stack_a, t_list **stack_b,
 						t_bench **bench);
 void				radix_sort(t_list **stack_a, t_list **stack_b,
 						t_bench **bench);
-void				vshort_sort(t_list **stack_a, t_bench **bench);
 
 int					check_flag_tab(char *tab);
 int					flag_select_algo(char **argv);
@@ -103,4 +101,15 @@ float				compute_disorder(t_list *stack_a);
 int					print_bench(int flag, float disorder, char **argv,
 						t_bench **bench);
 
+void				print_disorder_float(float nbr);
+void				print_erreur(char *tab);
+int					print_bench(int flag, float disorder, char **argv,
+						t_bench **bench);
+void				print_itoa_safe(int n);
+void				print_bench_operation(t_bench *bench);
+int					total_ops(t_bench *b);
+int					check_bench(char **argv);
+void				print_strategy(int flag, float disorder);
+int					ft_len_args(int ac, char **av);
+char				**create_args_clean(int argc, char **argv);
 #endif
