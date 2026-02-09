@@ -6,7 +6,7 @@
 /*   By: papilaz <papilaz@student.42lyon.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/01/06 16:35:37 by papilaz           #+#    #+#             */
-/*   Updated: 2026/02/03 21:30:54 by papilaz          ###   ########.fr       */
+/*   Updated: 2026/02/09 14:42:26 by papilaz          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,6 +28,8 @@ t_list	*create_stack(char **list_brut)
 		{
 			temp = ft_atoi(list_brut[i]);
 			ft_lstadd_back(&stack_created, ft_lstnew(temp, 0));
+			if (!stack_created)
+				return (0);
 			stack_created->flag = flag_select;
 		}
 		i++;

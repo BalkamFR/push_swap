@@ -6,7 +6,7 @@
 /*   By: papilaz <papilaz@student.42lyon.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/01/06 16:02:47 by papilaz           #+#    #+#             */
-/*   Updated: 2026/02/05 18:59:27 by papilaz          ###   ########.fr       */
+/*   Updated: 2026/02/09 14:52:14 by papilaz          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -56,7 +56,6 @@ int	select_algo(t_list **stack_a, t_list **stack_b, char **argv,
 	else if (flags == 0 || flags == 4)
 		select_algo_adaptative(stack_a, stack_b, bench, disorder);
 	print_bench(flags, disorder, argv, bench);
-	free(*bench);
 	return (0);
 }
 
@@ -104,7 +103,10 @@ int	main(int argc, char **argv)
 		return (0);
 	}
 	disorder = compute_disorder(stack_a);
-	select_algo(&stack_a, &stack_b, argv, &bench);
+	 select_algo(&stack_a, &stack_b, argv, &bench);
+
+	
+	free(bench);
 	ft_lstclear(&stack_a);
 	ft_lstclear(&stack_b);
 	return (1);
