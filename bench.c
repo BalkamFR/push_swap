@@ -6,11 +6,22 @@
 /*   By: papilaz <papilaz@student.42lyon.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/02/03 00:28:55 by papilaz           #+#    #+#             */
-/*   Updated: 2026/02/09 15:02:00 by papilaz          ###   ########.fr       */
+/*   Updated: 2026/02/09 16:28:34 by papilaz          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
+
+static void	print_itoa_safe(int n)
+{
+	char	*str;
+
+	str = ft_itoa(n);
+	if (!str)
+		return ;
+	print_erreur(str);
+	free(str);
+}
 
 static int	check_bench(char **argv)
 {
@@ -41,27 +52,27 @@ void	print_erreur(char *tab)
 static void	print_bench_operation(t_bench *bench)
 {
 	print_erreur("\n[bench] sa:  ");
-	print_erreur(ft_itoa(bench->nbr_sa));
+	print_itoa_safe(bench->nbr_sa);
 	print_erreur("  sb:  ");
-	print_erreur(ft_itoa(bench->nbr_sb));
+	print_itoa_safe(bench->nbr_sb);
 	print_erreur("  ss:  ");
-	print_erreur(ft_itoa(bench->nbr_ss));
+	print_itoa_safe(bench->nbr_ss);
 	print_erreur("  pa:  ");
-	print_erreur(ft_itoa(bench->nbr_pa));
+	print_itoa_safe(bench->nbr_pa);
 	print_erreur("  pb:  ");
-	print_erreur(ft_itoa(bench->nbr_pb));
+	print_itoa_safe(bench->nbr_pb);
 	print_erreur("\n[bench] ra:  ");
-	print_erreur(ft_itoa(bench->nbr_ra));
+	print_itoa_safe(bench->nbr_ra);
 	print_erreur("  rb:  ");
-	print_erreur(ft_itoa(bench->nbr_rb));
+	print_itoa_safe(bench->nbr_rb);
 	print_erreur("  rr:  ");
-	print_erreur(ft_itoa(bench->nbr_rr));
+	print_itoa_safe(bench->nbr_rr);
 	print_erreur("  rra:  ");
-	print_erreur(ft_itoa(bench->nbr_rra));
+	print_itoa_safe(bench->nbr_rra);
 	print_erreur("  rrb:  ");
-	print_erreur(ft_itoa(bench->nbr_rrb));
+	print_itoa_safe(bench->nbr_rrb);
 	print_erreur("  rrr:  ");
-	print_erreur(ft_itoa(bench->nbr_rrr));
+	print_itoa_safe(bench->nbr_rrr);
 	print_erreur("\n");
 }
 
@@ -75,12 +86,35 @@ void	print_disorder_float(float nbr)
 	integer = (int)percent;
 	nbr_float = (int)((percent - integer) * 100 + 0.0001);
 	print_erreur("[bench] disorder: ");
-	print_erreur(ft_itoa(integer));
+	print_itoa_safe(integer);
 	print_erreur(".");
 	if (nbr_float < 10)
 		print_erreur("0");
-	print_erreur(ft_itoa(nbr_float));
+	print_itoa_safe(nbr_float);
 	print_erreur("%\n");
+}
+
+static void	print_strategy(int flag, float disorder)
+{
+	if (flag == 1)
+		print_erreur("[bench] strategy: Simple O(n2)\n");
+	else if (flag == 2)
+		print_erreur("[bench] strategy: Medium O(n√n)\n");
+	else if (flag == 3)
+		print_erreur("[bench] strategy: Complex O(n log n)\n");
+	else if (disorder < 0.2)
+		print_erreur("[bench] strategy: Adaptive / O(n2)\n");
+	else if (disorder < 0.5)
+		print_erreur("[bench] strategy: Adaptive / O(n√n)\n");
+	else
+		print_erreur("[bench] strategy: Adaptive / O(n log n)\n");
+}
+
+static int	total_ops(t_bench *b)
+{
+	return (b->nbr_sa + b->nbr_sb + b->nbr_ss + b->nbr_pa + b->nbr_pb
+		+ b->nbr_ra + b->nbr_rb + b->nbr_rr + b->nbr_rra + b->nbr_rrb
+		+ b->nbr_rrr);
 }
 
 int	print_bench(int flag, float disorder, char **argv, t_bench **bench)
@@ -88,26 +122,9 @@ int	print_bench(int flag, float disorder, char **argv, t_bench **bench)
 	if (check_bench(argv) == 0)
 		return (0);
 	print_disorder_float(disorder);
-	if (flag == 1)
-		print_erreur("[bench] strategy: Simple O(n2)\n");
-	if (flag == 2)
-		print_erreur("[bench] strategy: Medium O(n√n)\n");
-	if (flag == 3)
-		print_erreur("[bench] strategy: Complex O(n log n)\n");
-	if (flag == 0 || flag == 4)
-	{
-		if (disorder < 0.2)
-			print_erreur("[bench] strategy: Adaptive / O(n2)\n");
-		else if (disorder < 0.5 && disorder >= 0.2)
-			print_erreur("[bench] strategy: Adaptive / O(n√n)\n");
-		else
-			print_erreur("[bench] strategy: Adaptive / O(n log n)\n");
-	}
+	print_strategy(flag, disorder);
 	print_erreur("[bench] total_ops:  ");
-	print_erreur(ft_itoa((*bench)->nbr_sa + (*bench)->nbr_sb + (*bench)->nbr_ss
-			+ (*bench)->nbr_pa + (*bench)->nbr_pb + (*bench)->nbr_ra
-			+ (*bench)->nbr_rb + (*bench)->nbr_rr + (*bench)->nbr_rra
-			+ (*bench)->nbr_rrb + (*bench)->nbr_rrr));
+	print_itoa_safe(total_ops(*bench));
 	print_bench_operation(*bench);
 	return (1);
 }
