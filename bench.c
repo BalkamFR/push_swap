@@ -6,7 +6,7 @@
 /*   By: papilaz <papilaz@student.42lyon.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/02/03 00:28:55 by papilaz           #+#    #+#             */
-/*   Updated: 2026/02/04 20:14:12 by papilaz          ###   ########.fr       */
+/*   Updated: 2026/02/05 18:43:02 by papilaz          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -75,11 +75,11 @@ void	print_disorder_float(float nbr)
 	integer = (int)percent;
 	nbr_float = (int)((percent - integer) * 100 + 0.0001);
 	print_erreur("[bench] disorder: ");
-	ft_putnbr(integer);
+	print_erreur(ft_itoa(integer));
 	print_erreur(".");
 	if (nbr_float < 10)
 		print_erreur("0");
-	ft_putnbr(nbr_float);
+	print_erreur(ft_itoa(nbr_float));
 	print_erreur("%\n");
 }
 
