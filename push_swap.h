@@ -6,7 +6,7 @@
 /*   By: papilaz <papilaz@student.42lyon.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/02/04 17:46:45 by papilaz           #+#    #+#             */
-/*   Updated: 2026/02/09 15:02:03 by papilaz          ###   ########.fr       */
+/*   Updated: 2026/02/09 15:58:09 by papilaz          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,6 +14,8 @@
 # define PUSH_SWAP_H
 
 # include <stdlib.h>
+#include "stdio.h"
+
 # include <unistd.h>
 
 typedef struct s_list

@@ -6,7 +6,7 @@
 /*   By: papilaz <papilaz@student.42lyon.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/02/04 17:41:38 by papilaz           #+#    #+#             */
-/*   Updated: 2026/02/09 14:43:18 by papilaz          ###   ########.fr       */
+/*   Updated: 2026/02/09 16:20:00 by papilaz          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,6 +19,8 @@ int	parcing_check_flag(char **argv)
 
 	i = 0;
 	flag = 0;
+	if (!argv)
+		return (1);
 	while (argv[i])
 	{
 		if (check_flag_tab(argv[i]) == 1 || check_flag_tab(argv[i]) == 2
@@ -53,9 +55,10 @@ t_list	*list_parsed(char **argv, int argc)
 
 	if (argc == 2)
 	{
-		new = ft_split(argv[1], ' ');
+		new = ft_split(argv[1], ' ');	
 		if (parcing_check_erreur(argc, new) == 1)
 		{
+			ft_free_all(new);
 			print_erreur("Error\n");
 			return (NULL);
 		}
