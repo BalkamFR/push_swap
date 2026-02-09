@@ -6,7 +6,7 @@
 /*   By: papilaz <papilaz@student.42lyon.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/01/06 16:02:47 by papilaz           #+#    #+#             */
-/*   Updated: 2026/02/09 21:58:01 by papilaz          ###   ########.fr       */
+/*   Updated: 2026/02/09 22:06:19 by papilaz          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -68,7 +68,7 @@ t_bench	*create_list_bench(void)
 	return (bench);
 }
 
-void	ft_free_all_3(t_list **stack_a, t_list **stack_b, t_bench *bench)
+void	ft_free_all_2(t_list **stack_a, t_list **stack_b, t_bench *bench)
 {
 	free(bench);
 	ft_lstclear(stack_a);
@@ -100,6 +100,6 @@ int	main(int argc, char **argv)
 		return (1);
 	select_algo(&stack_a, &stack_b, new_argv, &bench);
 	ft_free_all(new_argv);
-	ft_free_all_3(&stack_a, &stack_b, bench);
+	ft_free_all_2(&stack_a, &stack_b, bench);
 	return (0);
 }
