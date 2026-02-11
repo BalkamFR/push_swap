@@ -6,7 +6,7 @@
 /*   By: papilaz <papilaz@student.42lyon.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/02/09 19:16:10 by papilaz           #+#    #+#             */
-/*   Updated: 2026/02/09 21:34:41 by papilaz          ###   ########.fr       */
+/*   Updated: 2026/02/11 14:25:30 by papilaz          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,24 +18,25 @@ static char	*ft_concat_args(int ac, char **av)
 	int		j;
 	int		k;
 	long	len;
-	char	*s;
+	char	*str;
 
 	len = ft_len_args(ac, av);
-	i = 0;
-	s = malloc(sizeof(char) * (len + ac));
-	if (!s)
+	i = 1;
+	str = malloc(sizeof(char) * (len + ac));
+	if (!str)
 		return (NULL);
 	k = 0;
-	while (++i < ac)
+	while (i < ac)
 	{
 		j = 0;
 		while (av[i][j])
-			s[k++] = av[i][j++];
+			str[k++] = av[i][j++];
 		if (i < ac - 1)
-			s[k++] = ' ';
+			str[k++] = ' ';
+		i++;
 	}
-	s[k] = '\0';
-	return (s);
+	str[k] = '\0';
+	return (str);
 }
 
 int	parcing_check_flag(char **argv)

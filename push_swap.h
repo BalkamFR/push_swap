@@ -6,14 +6,13 @@
 /*   By: papilaz <papilaz@student.42lyon.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/02/04 17:46:45 by papilaz           #+#    #+#             */
-/*   Updated: 2026/02/09 21:26:24 by papilaz          ###   ########.fr       */
+/*   Updated: 2026/02/11 14:18:19 by papilaz          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef PUSH_SWAP_H
 # define PUSH_SWAP_H
 
-# include <stdio.h>
 # include <stdlib.h>
 # include <unistd.h>
 
